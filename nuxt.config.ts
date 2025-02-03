@@ -1,6 +1,9 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: false },
-  modules: ['@nuxt/image', '@nuxtjs/tailwindcss'],
-  compatibilityDate: '2025-01-30'
+    devtools: { enabled: false },
+    modules: ['@nuxt/image', '@nuxtjs/tailwindcss', 'shadcn-nuxt', '@nuxtjs/color-mode'],
+    shadcn: {
+        prefix: 'Ui',
+        componentDir: './components/ui'
+    },
+    compatibilityDate: '2025-01-30'
 })
