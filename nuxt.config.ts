@@ -8,7 +8,7 @@ export default defineNuxtConfig({
                     ital: [300],
                 },
             }
-        }],],
+        }], '@nuxt/icon'],
     shadcn: {
         prefix: 'Ui',
         componentDir: './components/ui'
