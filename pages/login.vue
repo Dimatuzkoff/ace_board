@@ -19,23 +19,24 @@ const nameRef = ref("");
         <UiInput
           placeholder="Email"
           type="email"
-          class="bm-3"
+          class="mb-3"
           v-model="emailRef"
         />
         <UiInput
           placeholder="Password"
           type="password"
-          class="bm-3"
+          class="mb-3"
           v-model="passwordRef"
         />
         <UiInput
           placeholder="Name"
           type="name"
-          class="bm-3"
+          class="mb-3"
           v-model="nameRef"
         />
         <div class="flex items-center justify-center gap-5">
-          <UiButton>Login</UiButton>
+          <UiButton type="button">Login</UiButton>
+          <UiButton type="button">Register</UiButton>
         </div>
       </form>
     </div>
