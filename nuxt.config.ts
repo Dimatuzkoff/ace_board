@@ -8,10 +8,13 @@ export default defineNuxtConfig({
                     ital: [300],
                 },
             }
-        }], '@nuxt/icon'],
+        }], '@nuxt/icon', '@pinia/nuxt'],
     shadcn: {
         prefix: 'Ui',
         componentDir: './components/ui'
+    },
+    pinia: {
+        storesDirs: ['./stores/**'],
     },
     compatibilityDate: '2025-01-30'
 })
