@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+useSeoMeta({
+  title: "Home | CRM ACE - BOARD",
+});
 </script>
 
 <template>
