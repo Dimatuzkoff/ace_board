@@ -1,9 +1,11 @@
 <script lang="ts" setup>
 import { useMutation } from "@tanstack/vue-query";
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuid } from "uuid";
 import { defineProps, ref } from "vue";
 import { COLLECTION_DEALS, DB_ID } from "~/app.constants";
 import type { IDeal } from "~/types/deals.types";
+import { useForm } from "vee-validate";
+
 const isOpenForm = ref<boolean>(false);
 
 interface IDealFormState extends Pick<IDeal, "name" | "price"> {
@@ -34,29 +36,80 @@ const [name, nameAttrs] = defineField("name");
 const [price, priceAttrs] = defineField("price");
 const [customerEmail, customerEmailAttrs] = defineField("customer.email");
 const [customerName, customerNameAttrs] = defineField("customer.name");
+
+const { mutate, isPending } = useMutation({
+  mutationKey: ["create a new deal"],
+  mutationFn: (data: IDealFormState) => {
+    console.log("Отправка данных в БД:", data);
+    return DB.createDocument(DB_ID, COLLECTION_DEALS, uuid(), data);
+  },
+  onSuccess(data) {
+    console.log("Сделка успешно создана!");
+    props.refetch && props.refetch();
+    handleReset();
+  },
+});
+
+const onSubmit = handleSubmit((values) => {
+  mutate(values);
+});
 </script>
 
 <template>
-  <div class="text-center mb-2">
-    <button
-      class="transition-all opacity-5 hoer:opacity-100 hover:text-[#a252c8]"
-      @click="isOpenForm = !isOpenForm"
-    >
-      <Icon
-        v-if="isOpenForm"
-        name="radix-icons:arrow-up"
-        class="fade-in-100 fade-out-0"
-        size="25"
+  <div>
+    <div class="text-center mb-2">
+      <button
+        class="transition-all opacity-5 hover:opacity-100 hover:text-[#a252c8]"
+        @click="isOpenForm = !isOpenForm"
+      >
+        <Icon
+          v-if="isOpenForm"
+          name="radix-icons:arrow-up"
+          class="fade-in-100 fade-out-0"
+          size="35"
+        />
+        <Icon
+          v-else
+          name="radix-icons:plus-circled"
+          class="fade-in-100 fade-out-0"
+          size="35"
+        />
+      </button>
+    </div>
+    <form v-if="isOpenForm" @submit="onSubmit" class="form">
+      <UiInput
+        placeholder="Наименование"
+        v-model="name"
+        v-bind="nameAttrs"
+        type="text"
+        class="input"
       />
-      <Icon
-        v-else
-        name="radix-icons:plus-circled"
-        class="fade-in-100 fade-out-0"
-        size="25"
+      <UiInput
+        placeholder="Сумма"
+        v-model="price"
+        v-bind="priceAttrs"
+        type="text"
+        class="input"
       />
-    </button>
+      <UiInput
+        placeholder="Email"
+        v-model="customerEmail"
+        v-bind="customerEmailAttrs"
+        type="text"
+        class="input"
+      />
+      <UiInput
+        placeholder="Компания"
+        v-model="customerName"
+        v-bind="customerNameAttrs"
+        type="text"
+        class="input"
+      />
+      <button class="btn" :disabled="isPending">
+        {{ isPending ? "Загрузка..." : "Добавить" }}
+      </button>
+    </form>
   </div>
-  <form></form>
 </template>
 
 <style scoped>

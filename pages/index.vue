@@ -23,10 +23,11 @@ const { data, isLoading, refetch } = useKanbanQuery();
             {{ column.name }}
           </div>
           <div>
+            <KanbanCreateDeal :refetch="refetch" :status="column.id" />
             <UiCard
               v-for="card in column.items"
               :key="card.id"
-              class="mb-3"
+              class="mb-5"
               draggable="true"
             >
               <UiCardHeader role="button">
@@ -37,6 +38,7 @@ const { data, isLoading, refetch } = useKanbanQuery();
               </UiCardHeader>
 
               <UiCardContent class="text-xs">
+                <div>Компания</div>
                 {{ card.companyName }}
               </UiCardContent>
               <UiCardFooter>
