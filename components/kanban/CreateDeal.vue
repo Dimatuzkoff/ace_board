@@ -43,7 +43,7 @@ const { mutate, isPending } = useMutation({
     console.log("Отправка данных в БД:", data);
     return DB.createDocument(DB_ID, COLLECTION_DEALS, uuid(), data);
   },
-  onSuccess(data) {
+  onSuccess() {
     console.log("Сделка успешно создана!");
     props.refetch && props.refetch();
     handleReset();
@@ -88,7 +88,7 @@ const onSubmit = handleSubmit((values) => {
         placeholder="Сумма"
         v-model="price"
         v-bind="priceAttrs"
-        type="text"
+        type="number"
         class="input"
       />
       <UiInput
