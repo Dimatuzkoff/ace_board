@@ -6,7 +6,8 @@ import dayjs from "dayjs";
 import { useMutation } from "@tanstack/vue-query";
 import type { EnumStatus } from "~/types/deals.types";
 import { COLLECTION_DEALS, DB_ID } from "~/app.constants";
-import { generateColumnStyle } from "~/components/kanban/generate-gradient";``
+import { generateColumnStyle } from "~/components/kanban/generate-gradient";
+``;
 useSeoMeta({
   title: "Home | CRM ACE - BOARD",
 });
@@ -55,6 +56,7 @@ function handleDrop(targetColumn: IColumn) {
           :key="column.id"
           @dragover="handleDragOver"
           @drop="() => handleDrop(column)"
+          class="min-h-screen"
         >
           <div
             class="rounded bg-slate-700 py-1 px-5 mb-2 text-center"
