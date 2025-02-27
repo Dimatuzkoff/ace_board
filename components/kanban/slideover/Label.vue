@@ -14,5 +14,8 @@ const props = defineProps({
     <label v-if="labelText" class="opacity-75 mb-0.5 block text-xs">{{
       labelText
     }}</label>
+    <div class="text-base">
+      <slot />
+    </div>
   </div>
 </template>
