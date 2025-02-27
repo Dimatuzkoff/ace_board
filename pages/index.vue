@@ -7,7 +7,8 @@ import { useMutation } from "@tanstack/vue-query";
 import type { EnumStatus } from "~/types/deals.types";
 import { COLLECTION_DEALS, DB_ID } from "~/app.constants";
 import { generateColumnStyle } from "~/components/kanban/generate-gradient";
-``;
+import { useDealSlideStore } from "~/store/deal-slide.store";
+
 useSeoMeta({
   title: "Home | CRM ACE - BOARD",
 });
@@ -15,6 +16,7 @@ useSeoMeta({
 const dragCardRef = ref<ICard | null>(null);
 const sourceColumnRef = ref<IColumn | null>(null);
 const { data, isLoading, refetch } = useKanbanQuery();
+const store = useDealSlideStore();
 
 type TypeMutationVariables = {
   docId: string;
@@ -73,7 +75,7 @@ function handleDrop(targetColumn: IColumn) {
               draggable="true"
               @dragstart="() => handleDragStart(card, column)"
             >
-              <UiCardHeader role="button">
+              <UiCardHeader role="button" @click="store.set(card)">
                 <UiCardTitle>{{ card.name }}</UiCardTitle>
                 <UiCardDescription class="mt-2 block"
                   >{{ convertCurrency(card.price) }}
@@ -91,6 +93,7 @@ function handleDrop(targetColumn: IColumn) {
           </div>
         </div>
       </div>
+      <KanbanSlideover />
     </div>
   </div>
 </template>
