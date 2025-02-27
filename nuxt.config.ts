@@ -1,6 +1,6 @@
 export default defineNuxtConfig({
     devtools: { enabled: false },
-    modules: ['@nuxt/image', '@nuxtjs/tailwindcss', 'shadcn-nuxt', '@nuxtjs/color-mode',
+    modules: ['@nuxt/ui', '@nuxt/image', 'shadcn-nuxt', '@nuxtjs/color-mode',
         ['@nuxtjs/google-fonts', {
             families: {
                 Lato: {
@@ -8,7 +8,7 @@ export default defineNuxtConfig({
                     ital: [300],
                 },
             }
-        }], '@nuxt/icon', '@pinia/nuxt', ['@vee-validate/nuxt',
+        }], '@pinia/nuxt', ['@vee-validate/nuxt',
             {
                 autoImports: true
             }]],
