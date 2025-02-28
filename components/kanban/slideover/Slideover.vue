@@ -11,10 +11,10 @@ const isLocalOpen = computed({
 });
 </script>
 <template>
-  <div class="">
-    <USlideover v-model="isLocalOpen">
+  <div>
+    <USlideover v-model="isLocalOpen" :overlay="false">
       <UCard
-        class="flex flex-col flex-1 overflow-y-auto"
+        class="flex flex-col flex-1 overflow-y-auto bg-background"
         :ui="{
           body: { base: 'flex-1' },
           ring: '',

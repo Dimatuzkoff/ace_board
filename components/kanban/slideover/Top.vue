@@ -7,7 +7,7 @@ const store = useDealSlideStore();
 </script>
 
 <template>
-  <div class="border-border bg-black/20 rounded p-3">
+  <div class="border-border bg-black p-3">
     <div class="uppercase bold text-xl mb-4">О сделке</div>
     <KanbanSlideoverLabel label-text="Наименование">
       <h2>{{ store.card?.name }}</h2>
