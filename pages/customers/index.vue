@@ -12,8 +12,6 @@ const { data: customers, isLoading } = useQuery({
   queryFn: () =>
     DB.listDocuments(DB_ID, COLLECTION_CUSTOMERS) as unknown as ICustomer[],
 });
-
-// const customers = data?.value?.documents as unknown as ICustomer[];
 </script>
 
 

@@ -59,7 +59,7 @@ const { mutate: uploadImage, isPending: isUploadImagePending } = useMutation({
   mutationFn: (file: File) => storage.createFile(STORAGE_ID, uuid(), file),
   onSuccess(data) {
     const response = storage.getFileDownload(STORAGE_ID, data.$id);
-    setFieldValue("avatar_url", response.href);
+    setFieldValue("avatar_url", response);
   },
 });
 
