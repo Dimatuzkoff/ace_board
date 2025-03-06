@@ -5,9 +5,9 @@ useSeoMeta({
   title: "Login | CRM System",
 });
 
-const emailRef = ref("");
-const passwordRef = ref("");
-const nameRef = ref("");
+const emailRef = ref("dimatuzkoff@gmail.com");
+const passwordRef = ref("22222222");
+const nameRef = ref("Дмитро");
 
 const isLoadingStore = useIsLoadingStore();
 const authStore = useAuthStore();
@@ -46,9 +46,10 @@ async function register() {
 <template>
   <div class="flex items-center justify-center min-h-screen w-full">
     <div class="rounded bg-sidebar w-1/4 p-5">
-      <h1 class="text-2xl font-bold text-center mb-5">Login</h1>
+      <h1 class="text-2xl font-bold text-center mb-5">Вітаю!</h1>
       <form>
-        <UiInput
+        <p class="text-xl text-center mb-5">Дошка працює у тестовому режимі</p>
+        <!-- <UiInput
           placeholder="Email"
           type="email"
           class="mb-3"
@@ -65,10 +66,10 @@ async function register() {
           type="name"
           class="mb-3"
           v-model="nameRef"
-        />
+        /> -->
         <div class="flex items-center justify-center gap-5">
-          <UiButton type="button" @click="login">Login</UiButton>
-          <UiButton type="button" @click="register">Register</UiButton>
+          <UiButton type="button" @click="login">Увійти</UiButton>
+          <!-- <UiButton type="button" @click="register">Register</UiButton> -->
         </div>
       </form>
     </div>
