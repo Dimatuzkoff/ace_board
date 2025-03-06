@@ -7,7 +7,7 @@ useSeoMeta({
 
 const emailRef = ref("dimatuzkoff@gmail.com");
 const passwordRef = ref("22222222");
-const nameRef = ref("Дмитро");
+const nameRef = ref("Dima");
 
 const isLoadingStore = useIsLoadingStore();
 const authStore = useAuthStore();
